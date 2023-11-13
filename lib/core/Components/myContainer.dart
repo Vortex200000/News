@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:news/features/HomeLayoutScreen1/data/models/CatModel.dart';
 
 class MyContainer extends StatelessWidget {
   // const MyContainer({super.key});
-  Color? ContColor;
-  double? topright;
-  double? topleft;
-  double? bottomright;
-  double? bottomleft;
-  String? Imagepath;
-  String? text;
+  // Color? ContColor;
+  // double? topright;
+  // double? topleft;
+  // double? bottomright;
+  // double? bottomleft;
+  // String? Imagepath;
+  // String? text;
+  //
+  // MyContainer(this.ContColor, this.topright, this.topleft, this.bottomright,
+  //     this.bottomleft, this.Imagepath, this.text);
+  CategoryModel categorymodel;
 
-  MyContainer(this.ContColor, this.topright, this.topleft, this.bottomright,
-      this.bottomleft, this.Imagepath, this.text);
+  MyContainer(this.categorymodel);
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +26,9 @@ class MyContainer extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(Imagepath!),
+            Expanded(child: Image.asset(categorymodel.Image ?? "")),
             Text(
-              "${text}",
+              "${categorymodel.name}",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 22,
@@ -33,13 +37,9 @@ class MyContainer extends StatelessWidget {
           ],
         ),
         decoration: BoxDecoration(
-            color: ContColor,
+            color: categorymodel.catColor,
             border: Border.all(color: Colors.transparent),
-            borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(bottomright!),
-                topLeft: Radius.circular(topleft!),
-                topRight: Radius.circular(topright!),
-                bottomLeft: Radius.circular(bottomleft!))),
+            borderRadius: BorderRadius.all(Radius.circular(25))),
       ),
     );
   }
